@@ -53,7 +53,7 @@ class App extends Component {
       <>
         <DragDropContext onDragEnd={this.onDragEnd}>
           <div className="container">
-            <h1>Kanban Board &#9997;</h1>
+            <h1>Kanban Board <span className="emoji" role="img" aria-label="write">&#9997;</span></h1>
             <Boards {...this.state} />
           </div>
         </DragDropContext>
