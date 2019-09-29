@@ -6,7 +6,7 @@ import storage from './model.js';
 
 class Board extends Component {
   render() {
-    const { boards, tickets, addTicket, deleteTicket } = this.props;
+    const { boards, addTicket, deleteTicket } = this.props;
 
     return (
       <div className="boardContainer">
@@ -29,9 +29,7 @@ class Board extends Component {
                     ...provided.droppableProps.style
                   }}
                 >
-                  {tickets.filter(ticket => {
-                    return ticket.status === boardLabel
-                  }).map(ticket => (
+                  {storage.filterTickets(boardLabel).map(ticket => (
                     <Draggable draggableId={ticket.id} index={index} key={ticket.id}>
                       {provided => (
                         <div
@@ -59,7 +57,6 @@ class Board extends Component {
 
 Board.propTypes = {
   boards: PropTypes.arrayOf(PropTypes.string).isRequired,
-  tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
   addTicket: PropTypes.func.isRequired,
   deleteTicket: PropTypes.func.isRequired
 };
